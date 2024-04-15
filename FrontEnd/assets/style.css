@@ -234,3 +234,55 @@ footer nav ul {
 	margin: 2em
 }
 
+/* Admin */
+body.logged
+{
+	padding-top: 59px;
+}
+body.logged .unauth
+{
+	display: none !important;
+}
+body:not(.logged) .auth
+{
+	display: none !important;
+}
+
+#edit
+{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+.edit_mode
+{
+	top: 0;
+	right: 0;
+	left: 0;
+	position: fixed;
+	background-color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 59px;
+	gap: 10px;
+	color: white;
+}
+.edit_icon, .edit_icon_white
+{
+	height: 1rem;
+}
+.edit_icon
+{
+	filter: invert(100%);
+}
+.header_container
+{
+	display: flex;
+	align-items: first baseline;
+	justify-content: center;
+	gap: 30px;
+}

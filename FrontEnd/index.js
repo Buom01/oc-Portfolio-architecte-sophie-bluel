@@ -99,5 +99,8 @@ function filterClick({target: {dataset: {id}}})
         filter =>
             filter.addEventListener('click', filterClick)
     )
+
+    if (!!sessionStorage.getItem('token'))
+        document.body.classList.add('logged');
 }
 )();

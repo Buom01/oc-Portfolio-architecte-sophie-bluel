@@ -11,13 +11,18 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+<div class="edit_mode auth">
+	<img src="./assets/icons/edit.svg" alt="Éditer" class="edit_icon_white"/>
+	<p>Mode édition</p>
+</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="./login.html">login</a></li>
+			<li class="unauth"><a href="./login.html">login</a></li>
+			<li class="auth"><a href="#">logout</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,7 +40,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="header_container">
+			<h2>Mes Projets</h2> 
+			<button id="edit" class="auth"><img src="./assets/icons/edit.svg" alt="Éditer" class="edit_icon"/> modifier</button>
+		</div>
 		<div class="categories" id="portfolio-filters">
 			<button disabled data-id="0">Tous</button>
 		</div>
