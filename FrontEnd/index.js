@@ -26,8 +26,8 @@ function createWorkElement({id, title, imageUrl, alt, categoryId})
     let caption = document.createElement("figcaption");
     let image = document.createElement("img");
 
-    root.setAttribute('data-id', id);
-    root.setAttribute('data-category', categoryId);
+    root.dataset.id = id;
+    root.dataset.category = categoryId;
     caption.innerText = title;
     image.setAttribute('alt', alt ?? title);
     image.setAttribute('src', imageUrl);
@@ -42,7 +42,7 @@ function createCategoryElement({id, name})
 {
     let root = document.createElement("button");
 
-    root.setAttribute('data-id', id);
+    root.dataset.id = id;
     root.innerText = name;
 
     return root;
@@ -63,8 +63,41 @@ async function initCategories()
     filters.append(...categories.map(createCategoryElement));
 };
 
+
+// Events Handling
+
+function filterClick({target: {dataset: {id}}})
+{
+    [...filters.children].forEach(
+        filter =>
+        {
+            if (filter.dataset.id == id)
+                filter.setAttribute('disabled', null)
+            else
+                filter.removeAttribute('disabled');
+        }
+    );
+    [...gallery.children].forEach(
+        work =>
+        {
+            if (id == 0 || work.dataset.category == id)
+                work.classList.remove('filtered');
+            else
+                work.classList.add('filtered');
+        }
+    );
+}
+
+
 // Main
 
-(async () => {
+(async () =>
+{
     await Promise.all([initWorks(), initCategories()]);
-})();
+
+    [...filters.children].forEach(
+        filter =>
+            filter.addEventListener('click', filterClick)
+    )
+}
+)();
