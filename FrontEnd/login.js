@@ -6,8 +6,31 @@ const passwordElem = document.getElementById('password');
 
 async function login(email, password)
 {
-    throw new Error('@TODO');
-    // throw new Error('Erreur dans l’identifiant ou le mot de passe');
+    console.log(JSON.stringify({email, password}));
+    let res = await fetch(
+        "http://localhost:5678/api/users/login",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({email, password})
+        }
+    )
+
+    if (res.ok)
+    {
+        let {userId, token} = await res.json();
+
+        sessionStorage.setItem('token', token);
+        sessionStorage.setItem('userId', userId);
+
+        return userId;
+    }
+    else if (res.status == 401 || res.status == 404)
+        throw new Error('Erreur dans l’identifiant ou le mot de passe');
+    else
+        throw new Error('Erreur inconnue');
 }
 
 
