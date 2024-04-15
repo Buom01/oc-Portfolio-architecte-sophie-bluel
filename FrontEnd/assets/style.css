@@ -94,6 +94,15 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+nav a
+{
+	color: black;
+	text-decoration: none;
+}
+nav .active
+{
+	font-weight: bolder;
+}
 
 li:hover {
 	color: #B1663C;
@@ -172,36 +181,40 @@ li:hover {
 	width: 100%;
 }
 
-#contact {
+section.form {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
+section.form > *, section.form {
 	text-align: center;
 
 }
-#contact h2{
+section.form h2{
 	margin-bottom: 20px;
 }
-#contact form {
+section.form form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+section.form input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+section.form label {
 	margin: 2em 0 1em 0;
 }
-#contact textarea {
+section.form textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+section.form a
+{
+	color: #3D3D3D;
 }
 
 input[type="submit"]{
