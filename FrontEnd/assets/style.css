@@ -125,6 +125,38 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.categories
+{
+	--main-color: #1D6154;
+	display: flex;
+	margin: 60px;
+	gap: 10px;
+	justify-content: center;
+}
+.categories button
+{
+	padding: 9px 12px;
+	min-width: 100px;
+	color: var(--main-color);
+	border: 1px solid var(--main-color);
+	border-radius: 60px;
+	background-color: transparent;
+
+	font-size: 16px;
+	line-height: 19px;
+	cursor: pointer;
+}
+.categories button:disabled, .categories button:hover
+{
+	background-color: #1D6154;
+	color: white;
+}
+.categories button:disabled
+{
+	cursor: default;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
