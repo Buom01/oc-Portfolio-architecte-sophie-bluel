@@ -11,10 +11,29 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+
 <div class="edit_mode auth">
 	<img src="./assets/icons/edit.svg" alt="Éditer" class="edit_icon_white"/>
 	<p>Mode édition</p>
 </div>
+<dialog class="modal" id="modal_gallery">
+		<button class="modal_close modal_button">
+			<img src="./assets/icons/close.svg" alt="Fermer"/>
+		</button>
+	<p class="modal_title">Galerie photo</p>
+	<hr/>
+	<button class="button modal_button" data-modal="modal_add">Ajouter une photo</button>
+</dialog>
+<dialog class="modal" id="modal_add">
+	<button class="modal_close modal_button">
+		<img src="./assets/icons/close.svg" alt="Fermer"/>
+	</button>
+	<button class="modal_back modal_button" data-modal="modal_gallery">
+		<img src="./assets/icons/arrow-left.svg" alt="Revenir"/>
+	</button>
+	<p class="modal_title">Ajout photo</p>
+</dialog>
+
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -42,9 +61,11 @@
 	<section id="portfolio">
 		<div class="header_container">
 			<h2>Mes Projets</h2> 
-			<button id="edit" class="auth"><img src="./assets/icons/edit.svg" alt="Éditer" class="edit_icon"/> modifier</button>
+			<button id="edit" class="auth modal_button" data-modal="modal_gallery">
+				<img src="./assets/icons/edit.svg" alt="Éditer" class="edit_icon"/> modifier
+			</button>
 		</div>
-		<div class="categories" id="portfolio-filters">
+		<div class="categories unauth" id="portfolio-filters">
 			<button disabled data-id="0">Tous</button>
 		</div>
 		<div class="gallery" id="portfolio-gallery">

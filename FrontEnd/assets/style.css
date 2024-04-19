@@ -48,6 +48,7 @@ table {
 }
 /** end reset css**/
 body {
+	--main-color: #1D6154;
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
@@ -132,12 +133,27 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	margin-bottom: 60px;
+}
+
+button.button, .categories button
+{
+	font-family: 'Syne';
+	font-weight: 700;
+	padding: 9px 11px;
+	width: 237px;
+	color: white;
+	border: 1px solid var(--main-color);
+	border-radius: 60px;
+	background-color: var(--main-color);
+
+	font-size: 16px;
+	line-height: 19px;
+	cursor: pointer;
 }
 
 .categories
 {
-	--main-color: #1D6154;
 	display: flex;
 	margin: 60px;
 	gap: 10px;
@@ -145,21 +161,14 @@ li:hover {
 }
 .categories button
 {
-	padding: 9px 12px;
+	width: initial;
 	min-width: 100px;
-	color: var(--main-color);
-	border: 1px solid var(--main-color);
-	border-radius: 60px;
-	background-color: transparent;
-
-	font-size: 16px;
-	line-height: 19px;
-	cursor: pointer;
+	padding: 9px 12px;
 }
-.categories button:disabled, .categories button:hover
+.categories button:not(:disabled):not(:hover)
 {
-	background-color: #1D6154;
-	color: white;
+	color: var(--main-color);
+	background-color: transparent;
 }
 .categories button:disabled
 {
@@ -285,4 +294,50 @@ body:not(.logged) .auth
 	align-items: first baseline;
 	justify-content: center;
 	gap: 30px;
+}
+
+/* Admin modal */
+
+.modal::backdrop {
+	background: black;
+	opacity: 0.3;
+	top: 59px;
+}
+.modal
+{
+	background-color: white;
+	border-radius: 10px;
+	width: 630px;
+	max-width: 100%;
+	padding: 45px 105px;
+	border: 0;
+	text-align: center;
+	box-sizing: border-box;
+}
+.modal_close
+{
+	position: absolute;
+	top: 26px;
+	right: 26px;
+	border: 0;
+	background-color: transparent;
+}
+.modal_back
+{
+	position: absolute;
+	top: 26px;
+	left: 26px;
+	border: 0;
+	background-color: transparent;
+}
+.modal_title
+{
+	line-height: 30.5px;
+	font-size: 26px;
+}
+.modal hr
+{
+	border: 0;
+	border-top: 1px solid #B3B3B3;
+	margin: 38px 0;
 }

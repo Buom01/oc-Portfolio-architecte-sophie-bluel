@@ -2,6 +2,8 @@
 
 const gallery = document.getElementById('portfolio-gallery');
 const filters = document.getElementById('portfolio-filters');
+const modals = document.getElementsByClassName('modal');
+const modalButtons = document.getElementsByClassName('modal_button');
 
 
 // Getters
@@ -66,7 +68,7 @@ async function initCategories()
 
 // Events Handling
 
-function filterClick({target: {dataset: {id}}})
+function filterClick({currentTarget: {dataset: {id}}})
 {
     [...filters.children].forEach(
         filter =>
@@ -88,6 +90,16 @@ function filterClick({target: {dataset: {id}}})
     );
 }
 
+function openModalFromButton({currentTarget: {dataset: {modal}}})
+{
+    [...modals].forEach(
+        modal =>
+            modal.close()
+    )
+    if (!!modal)
+        document.getElementById(modal).showModal();
+}
+
 
 // Main
 
@@ -102,5 +114,10 @@ function filterClick({target: {dataset: {id}}})
 
     if (!!sessionStorage.getItem('token'))
         document.body.classList.add('logged');
+
+    [...modalButtons].forEach(
+        modalButton =>
+            modalButton.addEventListener('click', openModalFromButton)
+    )
 }
 )();
