@@ -6,7 +6,6 @@ const passwordElem = document.getElementById('password');
 
 async function login(email, password)
 {
-    console.log(JSON.stringify({email, password}));
     let res = await fetch(
         "http://localhost:5678/api/users/login",
         {
