@@ -96,6 +96,7 @@ async function initWorks()
 async function initCategories()
 {
     let categories = await getCategories();
+
     filters.append(...categories.map(createCategoryElement));
     categoriesSelect.append(...categories.map(createCategoryOption));
 };
@@ -133,6 +134,23 @@ function removeWork(id)
     );
 }
 
+async function deleteWork(id)
+{
+    let res = await fetch(
+        `http://localhost:5678/api/works/${id}`,
+        {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+    )
+    if (res.ok)
+        removeWork(id);
+    else
+        throw new Error("Suppression échouée pour une raison inconnue");
+}
+
 function closeModals()
 {
     [...modals].forEach(
@@ -141,6 +159,23 @@ function closeModals()
     );
 }
 
+async function submitWork(formData)
+{
+    const res = await fetch(
+        `http://localhost:5678/api/works`,
+        {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        }
+    )
+    if (res.ok)
+        addWork(await res.json());
+    else
+        throw new Error("Ajout échouée pour raison inconnue");
+}
 
 // Error handling
 
@@ -194,20 +229,13 @@ function closeModalFromBackdrop({target, currentTarget})
 
 async function trashcanClick({currentTarget: {dataset: {id}}})
 {
-    let res = await fetch(
-        `http://localhost:5678/api/works/${id}`,
-        {
-            method: 'DELETE',
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        }
-    )
-    if (res.ok)
-        removeWork(id);
-    else
+    try
     {
-        alert("Suppression échouée");
+        await deleteWork(id);
+    }
+    catch ({message})
+    {
+        alert(message);
     }
 }
 
@@ -235,36 +263,25 @@ function uploaderFormReset({currentTarget})
     previewRoot.replaceChildren();
 }
 
-function submitWork(e)
+function submitWorkForm(e)
 {
     e.preventDefault();
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    fetch(
-        `http://localhost:5678/api/works`,
-        {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            }
-        }
-    )
-        .then(async res => {
-            if (res.ok)
+    submitWork(formData)
+        .then(
+            () =>
             {
-                addWork(await res.json());
                 form.reset();
                 closeModals();
             }
-            else
-                alert("Ajout échouée");
-        })
-        .catch(e => {
-            console.log(e);
-        });
+        )
+        .catch(
+            ({message}) =>
+                alert(message)
+        )
 }
 
 
@@ -286,7 +303,7 @@ function submitWork(e)
 
     initUploadInputs();
 
-    formAddWork.addEventListener('submit', submitWork);
+    formAddWork.addEventListener('submit', submitWorkForm);
 
     try
     {
