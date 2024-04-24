@@ -244,6 +244,14 @@ section.form, section.form > * {
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
+	cursor: pointer;
+}
+.form:has(input:invalid) button, .form:has(select:invalid) button,
+.form:has(input:invalid) input[type="submit"], .form:has(select:invalid) input[type="submit"]
+{
+	cursor: not-allowed;
+	background-color: #A7A7A7;
+	border-color: #A7A7A7;
 }
 
 .upload
