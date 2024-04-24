@@ -193,7 +193,7 @@ async function trashcanClick({currentTarget: {dataset: {id}}})
         {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         }
     )
@@ -242,7 +242,7 @@ function submitWork(e)
             method: 'POST',
             body: formData,
             headers: {
-                'Authorization': `Bearer ${sessionStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         }
     )
@@ -266,7 +266,7 @@ function submitWork(e)
 
 (async () =>
 {
-    if (!!sessionStorage.getItem('token'))
+    if (!!localStorage.getItem('token'))
         document.body.classList.add('logged');
 
     [...modalButtons].forEach(

@@ -21,8 +21,8 @@ async function login(email, password)
     {
         let {userId, token} = await res.json();
 
-        sessionStorage.setItem('token', token);
-        sessionStorage.setItem('userId', userId);
+        localStorage.setItem('token', token);
+        localStorage.setItem('userId', userId);
 
         return userId;
     }
