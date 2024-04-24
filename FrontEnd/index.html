@@ -17,43 +17,47 @@
 	<p>Mode édition</p>
 </div>
 <dialog class="modal" id="modal_gallery">
-	<button class="modal_close modal_button">
-		<img src="./assets/icons/close.svg" alt="Fermer"/>
-	</button>
-	<p class="modal_title">Galerie photo</p>
-	<div class="modal_gallery" id="modal-gallery">
-		<p>Chargement...</p>
+	<div>
+		<button class="modal_close modal_button">
+			<img src="./assets/icons/close.svg" alt="Fermer"/>
+		</button>
+		<p class="modal_title">Galerie photo</p>
+		<div class="modal_gallery" id="modal-gallery">
+			<p>Chargement...</p>
+		</div>
+		<hr/>
+		<button class="button modal_button" data-modal="modal_add">Ajouter une photo</button>
 	</div>
-	<hr/>
-	<button class="button modal_button" data-modal="modal_add">Ajouter une photo</button>
 </dialog>
 <dialog class="modal" id="modal_add">
-	<button class="modal_close modal_button">
-		<img src="./assets/icons/close.svg" alt="Fermer"/>
-	</button>
-	<button class="modal_back modal_button" data-modal="modal_gallery">
-		<img src="./assets/icons/arrow-left.svg" alt="Revenir"/>
-	</button>
-	<p class="modal_title">Ajout photo</p>
-	<form class="form" id="form-add-work">
-		<div class="upload">
-			<div class="upload_preview"></div>
-			<input type="file" id="image" name="image" accept=".png,.jpg" />
-			<div class="upload_input">
-				<img src="assets/icons/picture-placeholer.svg" alt="Photo vide"/>
-				<label for="image" class="button">+ Ajouter photo</label>
-				<p>jpg, png : 4mo max</p>
+	<div>
+		<button class="modal_close modal_button">
+			<img src="./assets/icons/close.svg" alt="Fermer"/>
+		</button>
+		<button class="modal_back modal_button" data-modal="modal_gallery">
+			<img src="./assets/icons/arrow-left.svg" alt="Revenir"/>
+		</button>
+		<p class="modal_title">Ajout photo</p>
+		<form class="form" id="form-add-work">
+			<div class="upload">
+				<div class="upload_preview"></div>
+				<input type="file" id="image" name="image" accept=".png,.jpg" />
+				<div class="upload_input">
+					<img src="assets/icons/picture-placeholer.svg" alt="Photo vide"/>
+					<label for="image" class="button">+ Ajouter photo</label>
+					<p>jpg, png : 4mo max</p>
+				</div>
 			</div>
-		</div>
-		<label for="title">Titre</label>
-		<input type="text" name="title" id="title">
-		<label for="category">Catégorie</label>
-		<select name="category" id="category">
-			<option value=""></option>
-		</select>
-		<hr/>
-		<button type="submit" class="button">Valider</button>
-	</form>
+			<label for="title">Titre</label>
+			<input type="text" name="title" id="title">
+			<label for="category">Catégorie</label>
+			<select name="category" id="category">
+				<option value=""></option>
+			</select>
+			<hr/>
+			<button type="submit" class="button">Valider</button>
+		</form>
+	</div>
 </dialog>
 
 <header>

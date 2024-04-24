@@ -186,6 +186,12 @@ function openModalFromButton({currentTarget: {dataset: {modal}}})
         document.getElementById(modal).showModal();
 }
 
+function closeModalFromBackdrop({target, currentTarget})
+{
+    if (target == currentTarget)
+        closeModals();
+}
+
 async function trashcanClick({currentTarget: {dataset: {id}}})
 {
     let res = await fetch(
@@ -272,6 +278,10 @@ function submitWork(e)
     [...modalButtons].forEach(
         modalButton =>
             modalButton.addEventListener('click', openModalFromButton)
+    );
+    [...modals].forEach(
+        modal =>
+            modal.addEventListener('click', closeModalFromBackdrop)
     );
 
     initUploadInputs();

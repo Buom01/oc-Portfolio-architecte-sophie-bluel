@@ -372,10 +372,14 @@ body:not(.logged) .auth
 	border-radius: 10px;
 	width: 630px;
 	max-width: 100%;
-	padding: 45px 105px;
+	padding: 0;
 	border: 0;
 	text-align: center;
 	box-sizing: border-box;
+}
+.modal > div
+{
+	padding: 45px 105px;
 }
 .modal_close
 {
