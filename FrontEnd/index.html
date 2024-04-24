@@ -41,7 +41,7 @@
 		<form class="form" id="form-add-work">
 			<div class="upload">
 				<div class="upload_preview"></div>
-				<input type="file" id="image" name="image" accept=".png,.jpg" />
+				<input type="file" id="image" name="image" accept=".png,.jpg" required/>
 				<div class="upload_input">
 					<img src="assets/icons/picture-placeholer.svg" alt="Photo vide"/>
 					<label for="image" class="button">+ Ajouter photo</label>
@@ -49,9 +49,9 @@
 				</div>
 			</div>
 			<label for="title">Titre</label>
-			<input type="text" name="title" id="title">
+			<input type="text" name="title" id="title" required>
 			<label for="category">Catégorie</label>
-			<select name="category" id="category">
+			<select name="category" id="category" required>
 				<option value=""></option>
 			</select>
 			<hr/>
