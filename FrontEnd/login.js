@@ -32,6 +32,11 @@ async function login(email, password)
         throw new Error('Erreur inconnue');
 }
 
+function redirectWhenLogged()
+{
+    window.location = './index.html';
+}
+
 
 // Events handling
 
@@ -42,12 +47,7 @@ async function loginSubmit(e)
     let email = emailElem.value;
     let password = passwordElem.value;
     login(email, password)
-        .then(
-            () =>
-            {
-                window.location = './index.html';
-            }
-        )
+        .then(redirectWhenLogged)
         .catch(
             ({message}) =>
                 alert(message)
@@ -59,3 +59,6 @@ async function loginSubmit(e)
 
 document.getElementById('login-form')
     .addEventListener('submit', loginSubmit);
+
+if (localStorage.getItem('token') && localStorage.getItem('userId'))
+    redirectWhenLogged();
