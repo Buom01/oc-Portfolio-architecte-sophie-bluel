@@ -7,6 +7,7 @@ const categoriesSelect = document.getElementById('category');
 const modals = document.getElementsByClassName('modal');
 const modalButtons = document.getElementsByClassName('modal_button');
 const formAddWork = document.getElementById('form-add-work')
+const logoutAction = document.getElementById('logout');
 
 
 // Getters
@@ -177,6 +178,14 @@ async function submitWork(formData)
         throw new Error("Ajout échouée pour raison inconnue");
 }
 
+function logout()
+{
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+    document.body.classList.remove('logged');
+}
+
+
 // Error handling
 
 function showError(e)
@@ -291,6 +300,8 @@ function submitWorkForm(e)
 {
     if (!!localStorage.getItem('token'))
         document.body.classList.add('logged');
+
+    logoutAction.addEventListener('click', logout);
 
     [...modalButtons].forEach(
         modalButton =>
