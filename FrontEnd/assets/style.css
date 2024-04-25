@@ -133,29 +133,35 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 60px;
+	margin: 80px 0 80px;
 }
 
 .button, .categories button
 {
 	font-family: 'Syne';
 	font-weight: 700;
-	padding: 9px 11px;
+	height: 36px;;
+	padding: 0 12px;
 	width: 237px;
 	color: white;
-	border: 1px solid var(--main-color);
+	border: none;
 	border-radius: 60px;
 	background-color: var(--main-color);
 
+	box-sizing: content-box;
 	font-size: 16px;
 	line-height: 19px;
 	cursor: pointer;
+}
+.categories button
+{
+	border: 1px solid var(--main-color);
 }
 
 .categories
 {
 	display: flex;
-	margin: 60px;
+	margin: -20px 0 60px;
 	gap: 10px;
 	justify-content: center;
 }
@@ -163,7 +169,6 @@ li:hover {
 {
 	width: initial;
 	min-width: 100px;
-	padding: 9px 12px;
 }
 .categories button:not(:disabled):not(:hover)
 {
@@ -214,7 +219,7 @@ section.form, section.form > * {
 .form input:not([type="file"]), .form select
 {
 	height: 50px;
-	font-size: 1.2em;
+	padding: 0 15px;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 	background-color: white;
@@ -230,12 +235,10 @@ section.form, section.form > * {
 {
 	color: #3D3D3D;
 }
-.form button
-{
-	margin: 0 auto;
-}
 
-.form input[type="submit"]{
+.form input[type="submit"]
+{
+	height: 36px;
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -306,6 +309,7 @@ section.form, section.form > * {
 	color: #306685;
 	width: 173px;
 	margin: 0.5em 0;
+	line-height: 36px;
 }
 
 footer nav ul {
@@ -409,7 +413,7 @@ body:not(.logged) .auth
 {
 	line-height: 30.5px;
 	font-size: 26px;
-	margin: 38px 0;
+	margin: 18px 0 38px;
 }
 .modal_gallery
 {
@@ -447,5 +451,9 @@ body:not(.logged) .auth
 {
 	border: 0;
 	border-top: 1px solid #B3B3B3;
-	margin: 38px 0;
+	margin: 44px 0 30px;
+}
+.modal button
+{
+	margin: 5px auto 10px;
 }
